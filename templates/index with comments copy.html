@@ -5,28 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Mission to Mars</title>
+    
+    //link to bootstrap stylesheet to access all of bootstraps components
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     />
   </head>
   <body>
+    //container is required for the grid system to work
     <div class="container">
+      
+      //jumbotron makes the header big and text is center
       <!-- Add Jumbotron to Header -->
       <div class="jumbotron text-center">
         <h1>Mission to Mars</h1>
+        //this creates the button scrape. role button is a link and required for screen readers
         <!-- Add a button to activate scraping script -->
         <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
       </div>
       <!-- Add section for Mars News -->
+      
+      //row tells bootstrap that we are going to use the grid system and everything within this div
+      will be horizontlly and aligned
       <div class="row" id="mars-news">
+        
+        //col specifies how many coumns this component will be using
         <div class="col-md-12">
           <div class="media">
-            <div class="media-body">
+            <
+              //class==media body bootstrap will apply specific stying header
+              div class="media-body">
               <h2>Latest Mars News</h2>
               <h4 class="media-heading">{{ mars.news_title }}</h4>
               <p>{{ mars.news_paragraph }}</p>
-            </div>
+            </>
           </div>
         </div>
       </div>
