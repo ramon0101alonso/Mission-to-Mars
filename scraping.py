@@ -24,6 +24,7 @@ def scrape_all():
 
     # Stop webdriver and return data
     browser.quit()
+    #returns data to app.py
     return data
 
 
@@ -97,7 +98,39 @@ def mars_facts():
     # Convert dataframe into HTML format, add bootstrap
     return df.to_html(classes="table table-striped")
 
-if __name__ == "__main__":
+
 
     # If running as script, print scraped data
+    #print(scrape_all())
+
+
+
+
+
+def scrapingmission(browser):
+    url = 'https://marshemispheres.com/'
+
+    browser.visit(url)
+
+    html = browser.html
+    img_soup = soup(html, 'html.parser')
+
+    hemisphere_img_urls = []
+
+    links = browser.find_by_css('a.product-item img')
+
+    for i in range(len(links)):
+        hemisphere = {}
+        browser.find_by_css('a.product-item img')[i].click()
+        sample_elem = browser.links.find_by_text('Sample').first
+        hemisphere['img_url'] = sample_elem['href']
+        hemisphere['title'] = browser.find_by_css('h2.title').text
+        hemisphere_img_urls.append(hemisphere)
+        browser.back()
+
+    
+    return hemisphere_img_urls
+
+    #browser.quit()
+if __name__ == "__main__":
     print(scrape_all())
